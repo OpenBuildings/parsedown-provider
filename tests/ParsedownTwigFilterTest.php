@@ -25,7 +25,7 @@ class ParsedownTwigFilterTest extends Twig_Test_IntegrationTestCase
 
     public function getTwigFilters()
     {
-        return [$this->container['parsedown.twig_filter']];
+        return array($this->container['parsedown.twig_filter']);
     }
 
     public function getFixturesDir()
