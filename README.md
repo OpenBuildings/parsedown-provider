@@ -2,7 +2,7 @@ Parsedown Service Provider
 ==========================
 
 This is a service provider for the [Markdown parser Parsedown][Parsedown].
-It could be used to easily use and configure Parseodwn with [Pimple][] or [Silex][].
+It could be used to easily use and configure Parsedown with [Pimple][] or [Silex][].
 
 Usage
 -----
