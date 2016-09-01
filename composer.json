@@ -15,7 +15,7 @@
         "pimple/pimple": "^3.0"
     },
     "require-dev": {
-        "twig/twig": "^1.23",
+        "twig/twig": "^1.24",
         "erusev/parsedown-extra": "^0.7.1",
         "phpunit/phpunit": "^4.0,<4.5"
     },
