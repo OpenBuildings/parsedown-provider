@@ -4,10 +4,7 @@
 {{ markdown|parsedown }}
 --DATA--
 return array(
-    'markdown' => <<<MARKDOWN
-Hi Markdown
-===========
-MARKDOWN
+    'markdown' => "Hi Markdown\n===========\n",
 )
 --EXPECT--
 <h1>Hi Markdown</h1>
