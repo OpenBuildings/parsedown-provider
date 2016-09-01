@@ -26,18 +26,31 @@ branches:
 cache:
   directories:
   - $HOME/.composer/cache
+  - $HOME/.php-cs-fixer
 
 notifications:
   email: false
   slack:
     secure: ixWu6kWtNIlzzdImpu4MdvGYpA6ZPp/dQpMAp6FDO2oHHB55J9ossBYtVtBXPCDs9OxqfQl2yqbE+TkhfIfkZqIbhvX2+CiIomvYSKZDvryUlCfbfV29behmSVIVYvg3b8Tba+nAyZeJA2guUyAy02WGr3n4I+PDgZC3Wa/mv94=
 
-before_install: travis_retry composer selfupdate --preview
+before_install:
+  - travis_retry composer selfupdate --preview
+  # Disable xdebug for faster Composer
+  - phpenv config-rm xdebug.ini
 
 install:
   - if [ "$DEPS" = "normal" ]; then travis_retry composer install --no-interaction; fi;
   - if [ "$DEPS" = "highest" ]; then travis_retry composer update --no-interaction; fi;
   - if [ "$DEPS" = "lowest" ]; then travis_retry composer update --no-interaction --prefer-lowest --prefer-stable; fi;
 
+before_script:
+  # Enable xdebug for code coverage
+  - echo "zend_extension=xdebug.so" > xdebug.ini
+  - phpenv config-add xdebug.ini
+
 script:
   - ./vendor/bin/phpunit --stop-on-error --stop-on-failure --coverage-text
+
+  # Disable xdebug for faster php-cs-fixer
+  - phpenv config-rm xdebug.ini
+  - ./vendor/bin/php-cs-fixer fix --cache-file $HOME/.php-cs-fixer/.php_cs.cache --dry-run --diff --no-interaction --verbose
