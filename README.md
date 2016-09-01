@@ -85,7 +85,7 @@ Authors and License
 
 The Parsedown provider was developed by the [Clippings.com][Clippings] team and is distributed under the MIT license.
 
-Read more about our projects at [Clippings Geeks blog][]
+Read more about our projects at the [Clippings Geeks blog][].
 
 [Parsedown]: https://github.com/erusev/parsedown
 [ParsedownExtra]: https://github.com/erusev/parsedown-extra
