@@ -2,3 +2,7 @@
 
 # Ignore local configuration
 /phpunit.xml
+/.php_cs
+
+# Cache files
+/.php_cs.cache
