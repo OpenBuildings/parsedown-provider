@@ -28,5 +28,8 @@
         "psr-4": {
             "Clippings\\ParsedownProvider\\Test\\": "tests"
         }
+    },
+    "suggest": {
+        "erusev/parsedown-extra": "Markdown Extra support"
     }
 }
