@@ -15,7 +15,7 @@ class ParsedownTraitTest extends \PHPUnit_Framework_TestCase
         $container = new ContainerWithTrait();
 
         $parsedownMock = $this->getMockBuilder('Parsedown')
-            ->setMethods(['text'])
+            ->setMethods(array('text'))
             ->getMock();
 
         $parsedownMock->expects($this->once())
