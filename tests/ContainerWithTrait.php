@@ -2,10 +2,10 @@
 
 namespace Clippings\ParsedownProvider\Test;
 
-use Silex\Application;
+use Pimple\Container;
 use Clippings\ParsedownProvider\ParsedownTrait;
 
-class ApplicationWithTrait extends Application
+class ContainerWithTrait extends Container
 {
     use ParsedownTrait;
 }

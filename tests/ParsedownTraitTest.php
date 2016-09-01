@@ -6,7 +6,13 @@ class ParsedownTraitTest extends \PHPUnit_Framework_TestCase
 {
     public function testParsedownTrait()
     {
-        $app = new ApplicationWithTrait();
+        if (-1 === version_compare(PHP_VERSION, '5.4.0')) {
+            $this->markTestSkipped(
+                'Skipping trait test as PHP traits are available after PHP 5.4'
+            );
+        }
+
+        $container = new ContainerWithTrait();
 
         $parsedownMock = $this->getMockBuilder('Parsedown')
             ->setMethods(['text'])
@@ -17,8 +23,8 @@ class ParsedownTraitTest extends \PHPUnit_Framework_TestCase
             ->with('markdown')
             ->will($this->returnValue('html'));
 
-        $app['parsedown'] = $parsedownMock;
+        $container['parsedown'] = $parsedownMock;
 
-        $this->assertEquals('html', $app->parsedown('markdown'));
+        $this->assertEquals('html', $container->parsedown('markdown'));
     }
 }
