@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b5c541dabd8ad389099377a7e15c01c5",
-    "content-hash": "5ffe3be234f340d339201682312fa116",
+    "hash": "66905719385757eafc04215a9101a747",
+    "content-hash": "276731cc42b910f1416c56e92fd2b4b3",
     "packages": [
         {
             "name": "erusev/parsedown",
