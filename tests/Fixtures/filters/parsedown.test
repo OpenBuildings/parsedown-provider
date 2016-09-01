@@ -1,0 +1,13 @@
+--TEST--
+"parsedown" filter
+--TEMPLATE--
+{{ markdown|parsedown }}
+--DATA--
+return array(
+    'markdown' => <<<MARKDOWN
+Hi Markdown
+===========
+MARKDOWN
+)
+--EXPECT--
+<h1>Hi Markdown</h1>

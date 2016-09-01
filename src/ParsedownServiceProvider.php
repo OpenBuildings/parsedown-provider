@@ -4,6 +4,7 @@ namespace Clippings\ParsedownProvider;
 
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
+use Twig_SimpleFilter;
 
 class ParsedownServiceProvider implements ServiceProviderInterface
 {
@@ -25,17 +26,19 @@ class ParsedownServiceProvider implements ServiceProviderInterface
             return $parsedown;
         };
 
+        $app['parsedown.twig_filter'] = function (Container $app) {
+            return new Twig_SimpleFilter(
+                'parsedown',
+                array($app['parsedown'], 'text'),
+                array('is_safe' => array('html'))
+            );
+        };
+
         if (isset($app['twig'])) {
             $app->extend(
                 'twig',
                 function (Twig_Environment $twig, Container $app) {
-                    $twig->addFilter(new Twig_SimpleFilter(
-                        'parsedown',
-                        array($app['parsedown'], 'text'),
-                        array(
-                            'is_safe' => array('html'),
-                        )
-                    ));
+                    $twig->addFilter($app['parsedown.twig_filter']);
 
                     return $twig;
                 }
