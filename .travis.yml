@@ -51,11 +51,11 @@ install:
 before_script:
   # Enable xdebug for code coverage
   - echo "zend_extension=xdebug.so" > xdebug.ini
-  - phpenv config-add xdebug.ini
+  - if [ "${TRAVIS_PHP_VERSION}" != "hhvm" ]; then phpenv config-add xdebug.ini; fi
 
 script:
   - ./vendor/bin/phpunit --stop-on-error --stop-on-failure --coverage-text
 
   # Disable xdebug for faster php-cs-fixer
-  - phpenv config-rm xdebug.ini
+  - if [ "${TRAVIS_PHP_VERSION}" != "hhvm" ]; then phpenv config-rm xdebug.ini; fi
   - if [ "$DEPS" = "normal" ]; then ./vendor/bin/php-cs-fixer fix --cache-file $HOME/.php-cs-fixer/.php_cs.cache --dry-run --diff --no-interaction --verbose; fi
