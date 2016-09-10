@@ -53,4 +53,4 @@ script:
 
   # Disable xdebug for faster php-cs-fixer
   - phpenv config-rm xdebug.ini
-  - ./vendor/bin/php-cs-fixer fix --cache-file $HOME/.php-cs-fixer/.php_cs.cache --dry-run --diff --no-interaction --verbose
+  - if [ "$DEPS" = "normal" ]; then ./vendor/bin/php-cs-fixer fix --cache-file $HOME/.php-cs-fixer/.php_cs.cache --dry-run --diff --no-interaction --verbose; fi
