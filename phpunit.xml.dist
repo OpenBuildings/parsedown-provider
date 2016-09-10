@@ -1,4 +1,7 @@
-<phpunit colors="true" bootstrap="vendor/autoload.php">
+<phpunit
+ colors="true"
+ bootstrap="vendor/autoload.php"
+ forceCoversAnnotation="true">
     <testsuites>
         <testsuite name="ParsedownTestSuite">
             <directory suffix="Test.php">tests</directory>
