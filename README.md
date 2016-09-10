@@ -4,8 +4,21 @@ Parsedown Service Provider
 This is a service provider for the [Markdown parser Parsedown][Parsedown].
 It could be used to easily use and configure Parsedown with [Pimple][] or [Silex][].
 
+[![Build Status](https://travis-ci.org/clippings/parsedown-provider.svg?branch=master)](https://travis-ci.org/clippings/parsedown-provider)
+
+Installation
+------------
+
+Install the latest version with Composer:
+
+```
+composer require clippings/parsedown-provider
+```
+
 Usage
 -----
+
+Register the service provider in the Pimple container and enjoy!
 
 ``` php
 $app->register(new Clippings\ParsedownProvider\ParsedownServiceProvider());
@@ -18,7 +31,7 @@ It registers one service - `parsedown` which returns the same instance of `Parse
 Configuration
 -------------
 
-You configure it like that:
+You can configure it like that:
 
 ``` php
 $app->register(new Clippings\ParsedownProvider\ParsedownServiceProvider(), [
