@@ -20,9 +20,9 @@ matrix:
   fast_finish: true
   exclude:
     - php: 5.3
-      DEPS: normal
+      env: DEPS=normal
     - php: 5.4
-      DEPS: normal
+      env: DEPS=normal
 
 branches:
   only:
