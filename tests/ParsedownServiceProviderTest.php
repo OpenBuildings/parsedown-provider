@@ -68,7 +68,6 @@ class ParsedownServiceProviderTest extends \PHPUnit_Framework_TestCase
             '<h1 class="bar">Foo</h1>',
             $app['parsedown']->text('# Foo {.bar}')
         );
-
     }
 
     /**
