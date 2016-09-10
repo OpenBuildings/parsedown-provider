@@ -63,6 +63,5 @@ class ParsedownServiceProviderTest extends \PHPUnit_Framework_TestCase
         };
         $app->register(new ParsedownServiceProvider());
         $this->assertSame($app['parsedown.twig_filter'], $app['twig']->getFilter('parsedown'));
-
     }
 }
