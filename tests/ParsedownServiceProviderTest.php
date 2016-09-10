@@ -46,9 +46,9 @@ class ParsedownServiceProviderTest extends \PHPUnit_Framework_TestCase
     public function testLazines()
     {
         $app = new Container();
-        $app->register(new ParsedownServiceProvider(), [
+        $app->register(new ParsedownServiceProvider(), array(
             'parsedown.urls_linked' => false,
-        ]);
+        ));
         $this->assertSame(
             '<p>https://example.com</p>',
             $app['parsedown']->text('https://example.com')
@@ -59,7 +59,7 @@ class ParsedownServiceProviderTest extends \PHPUnit_Framework_TestCase
     {
         $app = new Container();
         $app['twig'] = function () {
-            return new Twig_Environment(new Twig_Loader_Array([]));
+            return new Twig_Environment(new Twig_Loader_Array(array()));
         };
         $app->register(new ParsedownServiceProvider());
         $this->assertSame($app['parsedown.twig_filter'], $app['twig']->getFilter('parsedown'));
