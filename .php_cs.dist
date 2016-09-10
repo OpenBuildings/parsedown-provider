@@ -11,13 +11,13 @@ $finder = Finder::create()
     ->ignoreDotFiles(true)
     ->ignoreUnreadableDirs(true)
     ->ignoreVCS(true)
-    ->in([
+    ->in(array(
         'src',
         'tests',
-    ]);
+    ));
 
 return Config::create()
-    ->fixers([
+    ->fixers(array(
         '@Symfony' => true,
         'ereg_to_preg' => true,
         'php4_constructor' => true,
@@ -35,7 +35,7 @@ return Config::create()
         'ordered_imports' => true,
         // PHP 5.3 support
         'long_array_syntax' => true,
-    ])
+    ))
     ->setUsingLinter(true)
     ->setUsingCache(true)
     ->setRiskyAllowed(true)
