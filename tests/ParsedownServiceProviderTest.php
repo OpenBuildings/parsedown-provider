@@ -5,8 +5,14 @@ namespace Clippings\ParsedownProvider\Test;
 use Pimple\Container;
 use Clippings\ParsedownProvider\ParsedownServiceProvider;
 
+/**
+ * @coversDefaultClass \Clippings\ParsedownProvider\ParsedownServiceProvider
+ */
 class ParsedownServiceProviderTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @covers ::register
+     */
     public function testRegister()
     {
         $app = new Container();
