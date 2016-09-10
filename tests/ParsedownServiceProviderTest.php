@@ -37,4 +37,19 @@ class ParsedownServiceProviderTest extends \PHPUnit_Framework_TestCase
             $app['parsedown.twig_filter']
         );
     }
+
+    /**
+     * @covers ::register
+     */
+    public function testLazines()
+    {
+        $app = new Container();
+        $app->register(new ParsedownServiceProvider(), [
+            'parsedown.urls_linked' => false,
+        ]);
+        $this->assertSame(
+            '<p>https://example.com</p>',
+            $app['parsedown']->text('https://example.com')
+        );
+    }
 }
