@@ -2,9 +2,11 @@
 "parsedown" filter
 --TEMPLATE--
 {{ markdown|parsedown }}
+{{ 'https://example.com'|parsedown }}
 --DATA--
 return array(
     'markdown' => "Hi Markdown\n===========\n",
 )
 --EXPECT--
 <h1>Hi Markdown</h1>
+<p>https://example.com</p>
