@@ -9,21 +9,26 @@ class ParsedownServiceProviderTest extends \PHPUnit_Framework_TestCase
 {
     public function testRegister()
     {
-        $container = new Container();
-        $container->register(new ParsedownServiceProvider());
-        $this->assertNotNull(
-            $container['parsedown'],
-            '"parsedown" service must be registered by the provider'
-        );
+        $app = new Container();
+        $app->register(new ParsedownServiceProvider());
+
+        $this->assertArrayHasKey('parsedown.class', $app);
+        $this->assertArrayHasKey('parsedown.breaks_enabled', $app);
+        $this->assertArrayHasKey('parsedown.markup_escaped', $app);
+        $this->assertArrayHasKey('parsedown.urls_linked', $app);
+        $this->assertArrayHasKey('parsedown', $app);
+        $this->assertArrayHasKey('parsedown.twig_filter', $app);
+
+        $this->assertInstanceOf('Parsedown', $app['parsedown']);
+        $this->assertSame($app['parsedown'], $app['parsedown']);
+
+        $this->assertTrue($app['parsedown.breaks_enabled']);
+        $this->assertFalse($app['parsedown.markup_escaped']);
+        $this->assertTrue($app['parsedown.urls_linked']);
+
         $this->assertInstanceOf(
-            'Parsedown',
-            $container['parsedown'],
-            '"parsedown" service must be an instance of Parsedown'
-        );
-        $this->assertSame(
-            $container['parsedown'],
-            $container['parsedown'],
-            '"parsedown" service must always return the same instance'
+            'Twig_SimpleFilter',
+            $app['parsedown.twig_filter']
         );
     }
 }
