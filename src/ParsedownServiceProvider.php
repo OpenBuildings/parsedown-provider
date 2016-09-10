@@ -4,6 +4,7 @@ namespace Clippings\ParsedownProvider;
 
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
+use Twig_Environment;
 use Twig_SimpleFilter;
 
 class ParsedownServiceProvider implements ServiceProviderInterface

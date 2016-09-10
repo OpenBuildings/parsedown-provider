@@ -3,6 +3,8 @@
 namespace Clippings\ParsedownProvider\Test;
 
 use Pimple\Container;
+use Twig_Environment;
+use Twig_Loader_Array;
 use Clippings\ParsedownProvider\ParsedownServiceProvider;
 
 /**
@@ -51,5 +53,16 @@ class ParsedownServiceProviderTest extends \PHPUnit_Framework_TestCase
             '<p>https://example.com</p>',
             $app['parsedown']->text('https://example.com')
         );
+    }
+
+    public function testTwigFilterIsRegistered()
+    {
+        $app = new Container();
+        $app['twig'] = function () {
+            return new Twig_Environment(new Twig_Loader_Array([]));
+        };
+        $app->register(new ParsedownServiceProvider());
+        $this->assertSame($app['parsedown.twig_filter'], $app['twig']->getFilter('parsedown'));
+
     }
 }
