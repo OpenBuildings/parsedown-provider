@@ -44,5 +44,5 @@ install:
   - if [ "$DEPS" = "lowest" ]; then travis_retry composer update --no-interaction --prefer-lowest --prefer-stable; fi;
 
 script:
-  - ./vendor/bin/phpunit --stop-on-error --stop-on-failure --coverage-text
+  - ./vendor/bin/phpunit  --coverage-text
   - if [ "$DEPS" = "normal" ]; then ./vendor/bin/php-cs-fixer fix --cache-file $HOME/.php-cs-fixer/.php_cs.cache --dry-run --diff --no-interaction --verbose; fi
