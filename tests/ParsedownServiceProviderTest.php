@@ -2,6 +2,7 @@
 
 namespace Clippings\ParsedownProvider\Test;
 
+use PHPUnit\Framework\TestCase;
 use Pimple\Container;
 use Twig_Environment;
 use Twig_Loader_Array;
@@ -10,7 +11,7 @@ use Clippings\ParsedownProvider\ParsedownServiceProvider;
 /**
  * @coversDefaultClass \Clippings\ParsedownProvider\ParsedownServiceProvider
  */
-class ParsedownServiceProviderTest extends \PHPUnit_Framework_TestCase
+class ParsedownServiceProviderTest extends TestCase
 {
     /**
      * @covers ::register

@@ -2,7 +2,9 @@
 
 namespace Clippings\ParsedownProvider\Test;
 
-class ParsedownTraitTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class ParsedownTraitTest extends TestCase
 {
     public function testParsedownTrait()
     {
