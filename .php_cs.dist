@@ -17,10 +17,9 @@ $finder = Finder::create()
     ));
 
 return Config::create()
-    ->fixers(array(
+    ->setRules([
         '@Symfony' => true,
         'ereg_to_preg' => true,
-        'php4_constructor' => true,
         'php_unit_construct' => true,
         'php_unit_dedicate_assert' => true,
         'php_unit_strict' => true,
@@ -33,10 +32,10 @@ return Config::create()
         'no_useless_else' => true,
         'no_useless_return' => true,
         'ordered_imports' => true,
-        // PHP 5.3 support
-        'long_array_syntax' => true,
-    ))
-    ->setUsingLinter(true)
+        'array_syntax' => ['syntax' => 'short'],
+        '@PHP70Migration' => true,
+        '@PHP71Migration' => true,
+    ])
     ->setUsingCache(true)
     ->setRiskyAllowed(true)
-    ->finder($finder);
+    ->setFinder($finder);
