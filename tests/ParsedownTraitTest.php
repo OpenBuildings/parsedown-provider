@@ -17,7 +17,7 @@ class ParsedownTraitTest extends TestCase
         $container = new ContainerWithTrait();
 
         $parsedownMock = $this->getMockBuilder('Parsedown')
-            ->setMethods(array('text'))
+            ->setMethods(['text'])
             ->getMock();
 
         $parsedownMock->expects($this->once())
@@ -27,6 +27,6 @@ class ParsedownTraitTest extends TestCase
 
         $container['parsedown'] = $parsedownMock;
 
-        $this->assertEquals('html', $container->parsedown('markdown'));
+        $this->assertSame('html', $container->parsedown('markdown'));
     }
 }
