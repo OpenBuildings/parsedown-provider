@@ -15,10 +15,10 @@
         "pimple/pimple": "^3.0"
     },
     "require-dev": {
-        "twig/twig": "^1.24",
         "erusev/parsedown-extra": "^0.7.1",
         "phpunit/phpunit": "^7",
-        "friendsofphp/php-cs-fixer": "^2.0@alpha"
+        "friendsofphp/php-cs-fixer": "^2.0@alpha",
+        "twig/twig": "^2.5"
     },
     "autoload": {
         "psr-4": {
