@@ -2,7 +2,9 @@
 
 namespace Clippings\ParsedownProvider\Test;
 
-class ParsedownTraitTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class ParsedownTraitTest extends TestCase
 {
     public function testParsedownTrait()
     {
@@ -15,7 +17,7 @@ class ParsedownTraitTest extends \PHPUnit_Framework_TestCase
         $container = new ContainerWithTrait();
 
         $parsedownMock = $this->getMockBuilder('Parsedown')
-            ->setMethods(array('text'))
+            ->setMethods(['text'])
             ->getMock();
 
         $parsedownMock->expects($this->once())
@@ -25,6 +27,6 @@ class ParsedownTraitTest extends \PHPUnit_Framework_TestCase
 
         $container['parsedown'] = $parsedownMock;
 
-        $this->assertEquals('html', $container->parsedown('markdown'));
+        $this->assertSame('html', $container->parsedown('markdown'));
     }
 }

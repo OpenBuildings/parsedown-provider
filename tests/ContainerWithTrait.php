@@ -2,8 +2,8 @@
 
 namespace Clippings\ParsedownProvider\Test;
 
-use Pimple\Container;
 use Clippings\ParsedownProvider\ParsedownTrait;
+use Pimple\Container;
 
 class ContainerWithTrait extends Container
 {

@@ -2,15 +2,16 @@
 
 namespace Clippings\ParsedownProvider\Test;
 
+use Clippings\ParsedownProvider\ParsedownServiceProvider;
+use PHPUnit\Framework\TestCase;
 use Pimple\Container;
 use Twig_Environment;
 use Twig_Loader_Array;
-use Clippings\ParsedownProvider\ParsedownServiceProvider;
 
 /**
  * @coversDefaultClass \Clippings\ParsedownProvider\ParsedownServiceProvider
  */
-class ParsedownServiceProviderTest extends \PHPUnit_Framework_TestCase
+class ParsedownServiceProviderTest extends TestCase
 {
     /**
      * @covers ::register
@@ -46,9 +47,9 @@ class ParsedownServiceProviderTest extends \PHPUnit_Framework_TestCase
     public function testLazines()
     {
         $app = new Container();
-        $app->register(new ParsedownServiceProvider(), array(
+        $app->register(new ParsedownServiceProvider(), [
             'parsedown.urls_linked' => false,
-        ));
+        ]);
         $this->assertSame(
             '<p>https://example.com</p>',
             $app['parsedown']->text('https://example.com')
@@ -61,9 +62,9 @@ class ParsedownServiceProviderTest extends \PHPUnit_Framework_TestCase
     public function testClassConfiguration()
     {
         $app = new Container();
-        $app->register(new ParsedownServiceProvider(), array(
+        $app->register(new ParsedownServiceProvider(), [
             'parsedown.class' => 'ParsedownExtra',
-        ));
+        ]);
         $this->assertSame(
             '<h1 class="bar">Foo</h1>',
             $app['parsedown']->text('# Foo {.bar}')
@@ -77,7 +78,7 @@ class ParsedownServiceProviderTest extends \PHPUnit_Framework_TestCase
     {
         $app = new Container();
         $app['twig'] = function () {
-            return new Twig_Environment(new Twig_Loader_Array(array()));
+            return new Twig_Environment(new Twig_Loader_Array([]));
         };
         $app->register(new ParsedownServiceProvider());
         $this->assertSame($app['parsedown.twig_filter'], $app['twig']->getFilter('parsedown'));

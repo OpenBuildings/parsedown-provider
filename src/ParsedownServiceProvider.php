@@ -30,8 +30,8 @@ class ParsedownServiceProvider implements ServiceProviderInterface
         $app['parsedown.twig_filter'] = function (Container $app) {
             return new Twig_SimpleFilter(
                 'parsedown',
-                array($app['parsedown'], 'text'),
-                array('is_safe' => array('html'))
+                [$app['parsedown'], 'text'],
+                ['is_safe' => ['html']]
             );
         };
 
